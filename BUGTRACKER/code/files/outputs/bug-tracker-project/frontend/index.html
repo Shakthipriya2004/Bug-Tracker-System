@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Tracker</title>
+     <link rel="icon" type="image/png" href="images/bug.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <div class="app-logo">
+    <img src="images/bug.png" alt="Bug Tracker Logo">
+    <h1>Bug Tracker</h1>
+</div>
+            <p>Small-team issue dashboard</p>
+        </div>
+        <span id="bug-count">Loading...</span>
+    </header>
+
+    <main class="page">
+        <section class="metrics-grid" aria-label="Bug summary">
+            <article class="metric-card">
+                <span>Total Bugs</span>
+                <strong id="metric-total">0</strong>
+            </article>
+            <article class="metric-card">
+                <span>Open</span>
+                <strong id="metric-open">0</strong>
+            </article>
+            <article class="metric-card">
+                <span>Fixed</span>
+                <strong id="metric-fixed">0</strong>
+            </article>
+            <article class="metric-card">
+                <span>Critical</span>
+                <strong id="metric-critical">0</strong>
+            </article>
+        </section>
+
+        <section class="panel form-panel">
+            <h2>Report New Bug</h2>
+
+            <form id="bug-form" class="form-grid">
+                <label class="full">
+                    Bug Title
+                    <input id="title" type="text" placeholder="Example: Login button not working" required>
+                </label>
+
+                <label class="full">
+                    Description
+                    <textarea id="description" placeholder="Write what happened, where it happened, and steps to repeat it."></textarea>
+                </label>
+
+                <label>
+                    Severity
+                    <select id="severity">
+                        <option value="LOW">Low</option>
+                        <option value="MEDIUM" selected>Medium</option>
+                        <option value="HIGH">High</option>
+                        <option value="CRITICAL">Critical</option>
+                    </select>
+                </label>
+
+                <label>
+                    Assign To
+                    <input id="assignedTo" type="text" placeholder="Developer name">
+                </label>
+
+                <button class="primary-button full" type="submit">Add Bug</button>
+            </form>
+        </section>
+
+        <section class="panel table-panel">
+            <div class="table-heading">
+                <h2>All Bugs</h2>
+                <label class="filter">
+                    Status
+                    <select id="status-filter">
+                        <option value="">All</option>
+                        <option value="OPEN">Open</option>
+                        <option value="IN_PROGRESS">In Progress</option>
+                        <option value="FIXED">Fixed</option>
+                        <option value="REJECTED">Rejected</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Bug</th>
+                            <th>Severity</th>
+                            <th>Status</th>
+                            <th>Assigned</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bugs-body">
+                        <tr>
+                            <td colspan="7" class="empty">Loading bugs...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <section id="history-modal" class="modal" aria-hidden="true">
+        <div class="modal-box">
+            <div class="modal-heading">
+                <h2>Bug History</h2>
+                <button class="secondary-button" type="button" onclick="closeHistory()">Close</button>
+            </div>
+            <div id="history-list" class="history-list"></div>
+        </div>
+    </section>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
