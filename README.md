@@ -153,7 +153,7 @@ http://localhost:8080
 
 **P. M. Shakthi Priya**
 
-- B.Tech Artificial Intelligence & Data Science
+- M.Tech Artificial Intelligence & Data Science
 - Java Full Stack Developer
 - Data Analyst & Machine Learning Enthusiast
 
