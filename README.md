@@ -1,120 +1,94 @@
-Bug Tracker Project
-This is a 1-day beginner-friendly Java full-stack project using:
+Bug Tracker Management System
 
-Java 17
+A full-stack web application developed using Spring Boot and MySQL that enables users to report, track, manage, and resolve software bugs efficiently. The system provides a centralized platform for issue management with severity classification, status tracking, and responsive dashboards.
+
+Features
+Create, update, view, and delete bug records
+Bug severity classification (Low, Medium, High, Critical)
+Status tracking (Open, In Progress, Fixed, Rejected)
+Responsive user interface
+RESTful API integration
+MySQL database connectivity
+Real-time bug management workflow
+Tech Stack
+Backend
+Java
 Spring Boot
 Spring Data JPA
+Hibernate
+Frontend
+HTML5
+CSS3
+JavaScript
+Bootstrap
+Database
 MySQL
-HTML, CSS, and JavaScript
-What You Will Build
-A small-team Bug Tracker where users can:
+Project Architecture
+Frontend (HTML/CSS/JS)
+        ↓
+Spring Boot Controllers
+        ↓
+Service Layer
+        ↓
+Repository Layer (JPA)
+        ↓
+MySQL Database
+Screenshots
 
-Add a bug report
-Set severity: Low, Medium, High, Critical
-Assign the bug to a developer
-Change status: Open, In Progress, Fixed, Rejected
-Track bug history with timestamps
-Filter bugs by status
-Delete bugs
-Folder Structure
-bug-tracker-project/
-  backend/
-    pom.xml
-    src/main/java/com/bugtracker/
-      BugTrackerApplication.java
-      model/Bug.java
-      repository/BugRepository.java
-      service/BugService.java
-      controller/BugController.java
-    src/main/resources/application.properties
-  frontend/
-    index.html
-    style.css
-    script.js
-  sql/
-    bugtracker.sql
-1-Day Roadmap
-Hour 1: Setup
-Install or open:
+Add screenshots of:
 
-Java 17
-Maven
-MySQL or XAMPP
-IntelliJ IDEA, Eclipse, or VS Code
-Hour 2: Database
-If you use XAMPP:
+Dashboard
+Bug List
+Create Bug Form
+Update Bug Page
 
-Open XAMPP Control Panel.
-Start MySQL.
-Open http://localhost/phpmyadmin.
-Create a database named bugtracker.
-Open the SQL tab and run sql/bugtracker.sql.
-If you use MySQL command line:
+Example:
 
-mysql -u root < sql/bugtracker.sql
-If MySQL asks for a password and you know it:
+## Screenshots
 
-mysql -u root -p < sql/bugtracker.sql
-Important: If You Do Not Have a MySQL Password
-That is okay. The project is already configured for a blank password:
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
 
+### Bug List
+![Bug List](screenshots/bug-list.png)
+Database Schema
+Field	Type
+id	BIGINT
+title	VARCHAR
+description	TEXT
+severity	ENUM
+status	ENUM
+API Endpoints
+Method	Endpoint	Description
+GET	/api/bugs	Get all bugs
+GET	/api/bugs/{id}	Get bug by ID
+POST	/api/bugs	Create new bug
+PUT	/api/bugs/{id}	Update bug
+DELETE	/api/bugs/{id}	Delete bug
+Installation
+Clone Repository
+git clone https://github.com/yourusername/bug-tracker.git
+Configure Database
+
+Create a MySQL database:
+
+CREATE DATABASE bugtracker;
+
+Update application.properties:
+
+spring.datasource.url=jdbc:mysql://localhost:3306/bugtracker
 spring.datasource.username=root
-spring.datasource.password=
-This usually works with XAMPP and WAMP.
-
-If your MySQL later has a password, update this line in backend/src/main/resources/application.properties:
-
-spring.datasource.password=your_password_here
-Hour 3-5: Run Backend
-Open the backend folder in your IDE.
-
-Run:
-
+spring.datasource.password=your_password
+Run Application
 mvn spring-boot:run
-The backend starts at:
 
-http://localhost:8080
-Test API in browser:
-
-http://localhost:8080/api/bugs
-You should see JSON data.
-
-Hour 6-7: Run Frontend
 Open:
 
-frontend/index.html
-You can double-click the file, or open it with your browser.
-
-Hour 8: Practice Explanation
-Use this for your resume or viva:
-
-Built a full-stack Bug Tracker using Spring Boot REST APIs, MySQL persistence, and a vanilla JavaScript frontend. The app supports creating, viewing, filtering, updating, and deleting bug reports.
-
-API Endpoints
-Method	URL	Purpose
-GET	/api/bugs	Get all bugs
-GET	/api/bugs?status=OPEN	Filter bugs by status
-GET	/api/bugs/{id}	Get one bug
-GET	/api/bugs/{id}/history	Get bug history
-POST	/api/bugs	Create a bug
-PUT	/api/bugs/{id}	Update a bug
-DELETE	/api/bugs/{id}	Delete a bug
-Common Error Fixes
-Backend cannot connect to MySQL
-Check that MySQL is running.
-
-For XAMPP, keep:
-
-spring.datasource.username=root
-spring.datasource.password=
-Port 8080 already in use
-Change this in application.properties:
-
-server.port=8081
-Then update this line in frontend/script.js:
-
-const API_BASE = "http://localhost:8081/api/bugs";
-Frontend says backend offline
-Start the backend first:
-
-mvn spring-boot:run
+http://localhost:8080
+Future Enhancements
+User Authentication & Authorization
+Role-Based Access Control (Admin/Developer/Tester)
+Email Notifications
+Bug Assignment to Developers
+Search and Filter Functionality
+Analytics Dashboard
